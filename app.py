@@ -11,7 +11,7 @@ app = Flask(__name__)
 
 @app.route("/Nikki")
 def secondIndex():
-    return "Hello from Nikkitashaa"
+    return render_template("more.html")
 
 
 # generalizede route
@@ -45,7 +45,7 @@ def goodBye():
     return render_template("index.html", line=h)
 
 
-@app.route("/")
+@app.route("/newyear")
 def year():
     now = datetime.datetime.now()
     new_year = now.month == 6 and now.day == 14
