@@ -1,11 +1,12 @@
+import datetime
 from flask import Flask, render_template  # to display html file
 
 app = Flask(__name__)
 
 
-@app.route("/")
-def inde():
-    return "Hi from server"
+# @app.route("/")
+# def inde():
+#     return "Hi from server"
 
 
 @app.route("/Nikki")
@@ -27,7 +28,7 @@ def index():
 
 
 # dynamic rendering of html
-@app.route("/html2")
+@app.route("/hi")
 def intro():
     h = "HI from dynamic html"
     return render_template("index.html", line=h, multiple="nextline")
@@ -36,4 +37,16 @@ def intro():
 # {% if true %}<h1> Yes</h1>
 # {%else%} <h1> No</h1>
 # {%endif%}
-# checking git work
+
+
+@app.route("/bye")
+def goodBye():
+    h = "Lets say Bye"
+    return render_template("index.html", line=h)
+
+
+@app.route("/")
+def year():
+    now = datetime.datetime.now()
+    new_year = now.month == 6 and now.day == 14
+    return render_template("index.html", new_year=new_year, line="lets check")
